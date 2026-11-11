@@ -1,0 +1,451 @@
+{
+  "id": "stackbot",
+  "name": "Rekomendasi Framework dan Pustaka",
+  "bot_name": "StackBot",
+  "avatar": "🧰",
+  "color": "#0f766e",
+  "description": "Chatbot yang mendaftarkan pilihan framework dan pustaka berdasarkan jenis aplikasi yang ingin dibuat (backend, frontend, fullstack, mobile, game, desktop, data, CLI, testing, IoT).",
+  "greeting": "Halo! Saya StackBot. Sebutkan jenis aplikasi yang ingin kamu buat (backend, frontend, fullstack, mobile, game, desktop, data, CLI, testing, atau IoT), nanti saya daftarkan pilihan framework-nya.",
+  "suggestions": [
+    "Framework backend",
+    "Framework fullstack",
+    "Framework mobile",
+    "Framework game"
+  ],
+  "fallback": [
+    "Maaf, saya belum bisa menjawab pertanyaan itu. Saya membantu memilih framework berdasarkan jenis aplikasi: backend, frontend, fullstack, mobile, game, desktop, data, CLI, testing, atau IoT. Contoh: ‘mau bikin aplikasi mobile pakai apa?’",
+    "Pertanyaan itu belum bisa saya jawab. Saya memberi daftar pilihan framework sesuai jenis aplikasi (backend, frontend, fullstack, mobile, game, desktop, data, CLI, testing, atau IoT). Coba tanyakan, misalnya: ‘framework backend apa saja?’",
+    "Maaf, saya belum bisa menjawab itu. Saya hanya memberi daftar pilihan per jenis aplikasi, bukan penjelasan atau perbandingan framework. Jenis yang saya kenal: backend, frontend, fullstack, mobile, game, desktop, data, CLI, testing, dan IoT. Contoh: ‘tools membuat game 2d’."
+  ],
+  "intents": [
+    {
+      "tag": "salam",
+      "patterns": [
+        "halo",
+        "hai",
+        "hi",
+        "hello",
+        "hey",
+        "halo bot",
+        "hai bot",
+        "selamat pagi",
+        "selamat sore",
+        "selamat siang",
+        "selamat malam",
+        "assalamualaikum",
+        "permisi",
+        "pagi",
+        "siang",
+        "sore",
+        "malam"
+      ],
+      "responses": [
+        "Halo! Saya {nama_bot}. Sebutkan jenis aplikasi yang ingin kamu buat (backend, frontend, fullstack, mobile, game, desktop, data, CLI, testing, atau IoT), nanti saya daftarkan pilihan framework-nya.",
+        "Hai! Saya {nama_bot}, bisa membantu mencari framework untuk backend, frontend, fullstack, mobile, game, desktop, data, CLI, testing, dan IoT. Kamu mau bikin aplikasi apa?",
+        "Selamat datang! Saya {nama_bot}. Coba tanyakan, misalnya: ‘mau bikin aplikasi mobile pakai apa?’"
+      ]
+    },
+    {
+      "tag": "identitas",
+      "patterns": [
+        "nama kamu siapa",
+        "namamu siapa",
+        "kamu itu siapa",
+        "kamu bot apa",
+        "bot ini siapa",
+        "bot ini fungsinya apa",
+        "apa yang bisa kamu bantu",
+        "kamu bisa bantu apa",
+        "kegunaan bot ini apa",
+        "bot bisa bantu apa",
+        "kamu punya fungsi apa"
+      ],
+      "responses": [
+        "Saya {nama_bot}, chatbot yang memberi daftar pilihan framework dan pustaka berdasarkan jenis aplikasi yang ingin kamu buat. Saya tidak membuat peringkat. Coba tanya: ‘mau bikin aplikasi mobile pakai apa?’",
+        "Saya {nama_bot}. Tugas saya mendaftarkan pilihan framework sesuai jenis aplikasimu, tanpa peringkat. Contoh pertanyaan: ‘framework backend apa saja?’"
+      ]
+    },
+    {
+      "tag": "terima_kasih",
+      "patterns": [
+        "terima kasih",
+        "makasih",
+        "thanks",
+        "thank you",
+        "terima kasih banyak",
+        "makasih banyak",
+        "oke makasih",
+        "sip makasih",
+        "mantap makasih",
+        "dadah",
+        "bye",
+        "sampai jumpa",
+        "sampai nanti",
+        "dah dulu",
+        "udah cukup",
+        "sudah cukup",
+        "cukup sekian"
+      ],
+      "responses": [
+        "Sama-sama! Sampai jumpa lagi. Untuk perkembangan terbaru, cek dokumentasi resmi masing-masing framework.",
+        "Senang bisa membantu! Kalau butuh daftar framework untuk jenis aplikasi lain, tanyakan kapan saja. Cek dokumentasi resmi untuk info terbaru."
+      ]
+    },
+    {
+      "tag": "rekom_backend",
+      "patterns": [
+        "mau bikin backend pakai apa",
+        "framework backend untuk web",
+        "rekomendasi backend api",
+        "teknologi server side apa saja",
+        "tools untuk membuat rest api",
+        "framework api",
+        "bikin rest api pakai apa",
+        "bikin web server pakai apa",
+        "backend untuk aplikasi",
+        "bikin api untuk aplikasi",
+        "framework backend"
+      ],
+      "responses": [
+        "Pilihan framework backend:\n• Mikro & minimalis: Express (JS/TS), Fastify (JS/TS), KoaJS (JS/TS), Hono (JS/TS), Flask (Python), FastAPI (Python), Gin (Go), Echo (Go), Fiber (Go), Actix Web (Rust), Axum (Rust), Rocket (Rust)\n• Lengkap (batteries-included): NestJS (TypeScript), AdonisJS (TypeScript), HapiJS (JS/TS), Django (Python), Spring Boot (Java), ASP.NET Core (C#), Laravel (PHP), Symfony (PHP), CodeIgniter (PHP), Ruby on Rails (Ruby), Phoenix (Elixir)\n• Meta-framework dengan fitur server: Next.js (JS/TS)\nDaftar pilihan, bukan peringkat. Sumber: dokumentasi resmi.",
+        "Framework backend per bahasa:\n• JavaScript/TypeScript: Express, Fastify, NestJS, AdonisJS, HapiJS, Next.js, KoaJS, Hono\n• Python: Flask, Django, FastAPI\n• Java: Spring Boot\n• C#: ASP.NET Core\n• PHP: Laravel, Symfony, CodeIgniter\n• Ruby: Ruby on Rails\n• Go: Gin, Echo, Fiber\n• Rust: Actix Web, Axum, Rocket\n• Elixir: Phoenix\nDaftar pilihan, bukan peringkat. Sumber: dokumentasi resmi."
+      ]
+    },
+    {
+      "tag": "rekom_frontend",
+      "patterns": [
+        "mau bikin frontend rekomendasi apa",
+        "framework frontend apa saja",
+        "tampilan web pakai apa",
+        "library ui untuk website",
+        "tools untuk membuat antarmuka web",
+        "bikin ui web pakai apa",
+        "rekomendasi untuk bikin ui",
+        "desain tampilan website",
+        "framework javascript untuk tampilan",
+        "library ui",
+        "framework frontend"
+      ],
+      "responses": [
+        "Pilihan framework frontend:\n• Library & framework UI: React (JS/TS), Vue (JS/TS), Angular (TypeScript), Svelte (JS/TS), SolidJS (JS/TS), Qwik (JS/TS)\n• Meta-framework: Next.js (JS/TS), Nuxt (JS/TS), SvelteKit (JS/TS), React Router/eks-Remix (JS/TS), Astro (JS/TS)\n• Bahasa selain JavaScript: Blazor (C#), Flutter Web (Dart), Yew (Rust), Leptos (Rust), PyScript (Python), Anvil (Python)\nBrowser menjalankan JavaScript, jadi pilihan utamanya berbasis JavaScript/TypeScript.\nDaftar pilihan, bukan peringkat. Sumber: dokumentasi resmi.",
+        "Framework frontend per bahasa:\n• JavaScript/TypeScript: React, Vue, Angular, Svelte, Next.js, Nuxt, SvelteKit, React Router/eks-Remix, SolidJS, Qwik, Astro\n• C#: Blazor\n• Dart: Flutter Web\n• Rust: Yew, Leptos\n• Python: PyScript, Anvil\nProyek kecil juga bisa memakai HTML, CSS, dan JavaScript murni.\nDaftar pilihan, bukan peringkat. Sumber: dokumentasi resmi."
+      ]
+    },
+    {
+      "tag": "rekom_mobile",
+      "patterns": [
+        "mau bikin aplikasi mobile pakai apa",
+        "framework android",
+        "rekomendasi app mobile",
+        "bikin aplikasi hp lintas platform",
+        "tools membuat aplikasi ios dan android",
+        "bikin aplikasi android",
+        "bikin aplikasi ios",
+        "framework ios",
+        "aplikasi lintas platform",
+        "framework mobile"
+      ],
+      "responses": [
+        "Pilihan framework mobile:\n• Android native: Jetpack Compose (Kotlin), Android View System (Java/Kotlin)\n• iOS native: SwiftUI (Swift), UIKit (Swift/Objective-C)\n• Lintas platform: Flutter (Dart), React Native (JS/TS), Ionic (JS/TS), .NET MAUI (C#), Compose Multiplatform (Kotlin)\n• Hybrid & web-based: Capacitor (JS/TS), Apache Cordova (JS/TS), Framework7 (JS/TS)\nDaftar pilihan, bukan peringkat. Sumber: dokumentasi resmi.",
+        "Framework mobile per bahasa:\n• Kotlin: Jetpack Compose, Android View System, Compose Multiplatform\n• Java: Android View System\n• Swift: SwiftUI, UIKit\n• Objective-C: UIKit\n• Dart: Flutter\n• JavaScript/TypeScript: React Native, Ionic, Capacitor, Apache Cordova, Framework7\n• C#: .NET MAUI\nDaftar pilihan, bukan peringkat. Sumber: dokumentasi resmi."
+      ],
+      "next": {
+        "question": "Mau dipersempit? Pilih jalur mobile: Android, iOS, Cross Platform, atau Hybrid?",
+        "options": [
+          {
+            "label": "Android",
+            "patterns": ["android", "native android", "target android", "android saja", "khusus android"],
+            "response": "Untuk Android native:\n• Kotlin: Jetpack Compose, Android View System\n• Java: Android View System\nDaftar pilihan, bukan peringkat. Sumber: dokumentasi resmi."
+          },
+          {
+            "label": "iOS",
+            "patterns": ["ios", "iphone", "native ios", "ios saja", "khusus ios", "apple"],
+            "response": "Untuk iOS native:\n• Swift: SwiftUI, UIKit\n• Objective-C: UIKit\nDaftar pilihan, bukan peringkat. Sumber: dokumentasi resmi."
+          },
+          {
+            "label": "Cross Platform",
+            "patterns": ["cross platform", "lintas platform", "keduanya", "dua duanya", "android dan ios", "multiplatform"],
+            "response": "Untuk mobile lintas platform (Cross Platform):\n• Dart: Flutter\n• JavaScript/TypeScript: React Native, Ionic\n• C#: .NET MAUI\n• Kotlin: Compose Multiplatform\nDaftar pilihan, bukan peringkat. Sumber: dokumentasi resmi."
+          },
+          {
+            "label": "Hybrid",
+            "patterns": ["hybrid", "web based", "webview", "hybrid web", "bungkus web"],
+            "response": "Untuk mobile jalur Hybrid & web-based:\n• JavaScript/TypeScript: Capacitor, Apache Cordova, Framework7\nDaftar pilihan, bukan peringkat. Sumber: dokumentasi resmi."
+          }
+        ]
+      }
+    },
+    {
+      "tag": "rekom_game",
+      "patterns": [
+        "mau bikin game pakai apa",
+        "engine game untuk pemula",
+        "rekomendasi framework game",
+        "tools membuat game 2d",
+        "bikin game 3d pakai apa",
+        "bikin gim pakai apa",
+        "engine game",
+        "framework game 2d",
+        "game development",
+        "framework game"
+      ],
+      "responses": [
+        "Pilihan engine dan framework game:\n• Engine lengkap: Unity (C#), Unreal Engine (C++), Godot (GDScript, C#), CryEngine (C++, C#), GameMaker (GML, C++), Defold (Lua, C++), Cocos Creator (TypeScript, JavaScript), Construct 3 (JavaScript, visual scripting)\n• Framework & pustaka kode: Phaser (JavaScript), Pygame (Python), Arcade (Python), libGDX (Java), MonoGame (C#), Raylib (C, C++, binding Python/Go/C#), Bevy (Rust), LÖVE/Love2D (Lua), Cocos2d-x (C++)\n• Pustaka grafis 3D untuk web: Babylon.js (JS/TS), Three.js (JS/TS)\nCatatan: Three.js adalah pustaka grafis 3D, bukan engine game.\nDaftar pilihan, bukan peringkat. Sumber: dokumentasi resmi.",
+        "Engine dan framework game per bahasa:\n• C#: Unity, Godot, CryEngine, MonoGame\n• C++: Unreal Engine, CryEngine, Cocos2d-x, GameMaker, Defold, Raylib\n• GDScript: Godot\n• JavaScript/TypeScript: Phaser, Construct 3, Cocos Creator, Babylon.js, Three.js\n• Python: Pygame, Arcade\n• Java: libGDX\n• GML: GameMaker\n• C: Raylib\n• Rust: Bevy\n• Lua: Defold, LÖVE/Love2D\nDaftar pilihan, bukan peringkat. Sumber: dokumentasi resmi."
+      ],
+      "next": {
+        "question": "Mau dipersempit? Game-nya 2D atau 3D?",
+        "options": [
+          {
+            "label": "2D",
+            "patterns": ["2d", "dua dimensi", "game 2d", "2 dimensi", "pixel art"],
+            "response": "Untuk game 2D:\n• Engine: Godot (GDScript, C#), GameMaker (GML), Defold (Lua), Construct 3 (JavaScript, visual scripting), Cocos Creator (TypeScript, JavaScript), Unity (C#)\n• Framework kode: Phaser (JavaScript), Pygame (Python), Arcade (Python), LÖVE/Love2D (Lua), MonoGame (C#), libGDX (Java), Raylib (C, C++), Bevy (Rust)\nDaftar pilihan, bukan peringkat. Sumber: dokumentasi resmi."
+          },
+          {
+            "label": "3D",
+            "patterns": ["3d", "tiga dimensi", "game 3d", "3 dimensi"],
+            "response": "Untuk game 3D:\n• Engine: Unity (C#), Unreal Engine (C++), Godot (GDScript, C#), CryEngine (C++, C#)\n• Framework kode: Bevy (Rust), Raylib (C, C++), libGDX (Java), MonoGame (C#)\n• Web: Babylon.js (JS/TS), Three.js (JS/TS, pustaka grafis 3D)\nDaftar pilihan, bukan peringkat. Sumber: dokumentasi resmi."
+          }
+        ]
+      }
+    },
+    {
+      "tag": "rekom_desktop",
+      "patterns": [
+        "mau bikin aplikasi desktop pakai apa",
+        "framework untuk app pc",
+        "software desktop rekomendasi",
+        "bikin aplikasi windows pakai apa",
+        "tools membuat program desktop",
+        "bikin gui pakai apa",
+        "aplikasi untuk komputer",
+        "program windows",
+        "framework desktop"
+      ],
+      "responses": [
+        "Pilihan framework desktop:\n• Berbasis teknologi web: Electron (JS/TS), Tauri (Rust, JS/TS), Wails (Go, JS/TS), Neutralinojs (JS/TS)\n• Native Windows: WPF (C#, VB.NET), WinForms (C#, VB.NET), WinUI 3 (C#, C++)\n• Native macOS: AppKit (Swift, Objective-C)\n• Lintas platform: Qt (C++), PyQt/PySide (Python), Tkinter (Python), JavaFX (Java), Swing (Java), GTK (C, C++), wxWidgets (C++), Avalonia UI (C#), .NET MAUI (C#), Flutter Desktop (Dart), Compose Multiplatform (Kotlin), Slint (Rust, C++, JavaScript), Iced (Rust)\nDaftar pilihan, bukan peringkat. Sumber: dokumentasi resmi.",
+        "Framework desktop per bahasa:\n• JavaScript/TypeScript: Electron, Neutralinojs, Tauri, Wails\n• Rust: Tauri, Iced, Slint\n• Go: Wails\n• Python: PyQt, PySide, Tkinter\n• Java: JavaFX, Swing\n• C#: WPF, WinForms, WinUI 3, .NET MAUI, Avalonia UI\n• Visual Basic .NET: WPF, WinForms\n• C++: Qt, wxWidgets, WinUI 3, GTK, Slint\n• C: GTK\n• Dart: Flutter Desktop\n• Kotlin: Compose Multiplatform\n• Swift/Objective-C: AppKit\nDaftar pilihan, bukan peringkat. Sumber: dokumentasi resmi."
+      ],
+      "next": {
+        "question": "Mau dipersempit? Pilih jalur desktop: Berbasis Web, Native Windows, Native macOS, atau Lintas Platform?",
+        "options": [
+          {
+            "label": "Berbasis Web",
+            "patterns": ["berbasis web", "teknologi web", "web", "electron", "tauri"],
+            "response": "Untuk aplikasi desktop berbasis teknologi web (HTML/CSS/JS):\n• JavaScript/TypeScript: Electron, Neutralinojs\n• Rust + JS/TS: Tauri\n• Go + JS/TS: Wails\nDaftar pilihan, bukan peringkat. Sumber: dokumentasi resmi."
+          },
+          {
+            "label": "Native Windows",
+            "patterns": ["native windows", "windows", "khusus windows", "windows saja"],
+            "response": "Untuk aplikasi desktop khusus Windows (native):\n• C# / VB.NET: WPF, WinForms\n• C# / C++: WinUI 3\nDaftar pilihan, bukan peringkat. Sumber: dokumentasi resmi."
+          },
+          {
+            "label": "Native macOS",
+            "patterns": ["native macos", "macos", "mac", "apple", "khusus macos"],
+            "response": "Untuk aplikasi desktop khusus macOS (native):\n• Swift / Objective-C: AppKit\nDaftar pilihan, bukan peringkat. Sumber: dokumentasi resmi."
+          },
+          {
+            "label": "Lintas Platform",
+            "patterns": ["lintas platform", "cross platform", "semua os", "windows mac linux", "multiplatform"],
+            "response": "Untuk aplikasi desktop lintas platform (Windows, macOS, Linux):\n• C++ / C: Qt (C++), wxWidgets (C++), GTK (C, C++)\n• Python: PyQt/PySide, Tkinter\n• Java / Kotlin: JavaFX (Java), Swing (Java), Compose Multiplatform (Kotlin)\n• C# / Dart: Avalonia UI (C#), .NET MAUI (C#), Flutter Desktop (Dart)\n• Rust: Iced (Rust), Slint (Rust, C++, JavaScript)\nDaftar pilihan, bukan peringkat. Sumber: dokumentasi resmi."
+          }
+        ]
+      }
+    },
+    {
+      "tag": "rekom_data",
+      "patterns": [
+        "mau analisis data pakai apa",
+        "pustaka untuk data science",
+        "rekomendasi tools data",
+        "tools visualisasi data",
+        "bikin dashboard data pakai apa",
+        "olah data pakai apa",
+        "visualisasi data",
+        "grafik data pakai apa",
+        "framework data"
+      ],
+      "responses": [
+        "Pilihan pustaka data dan analisis:\n• Pengolahan data: pandas (Python), NumPy (Python), Polars (Python, Rust), SciPy (Python), Statsmodels (Python), DuckDB (Python, C++, R, Java, JavaScript), PySpark (Python, Scala, Java), tidyverse (R), Apache Arrow (C++, Python, Java, Rust)\n• Visualisasi: Matplotlib (Python), Seaborn (Python), Plotly (Python, JavaScript, R), Bokeh (Python), D3.js (JavaScript), Chart.js (JavaScript), Apache ECharts (JS/TS), Observable Plot (JavaScript)\n• Dashboard & aplikasi data: Streamlit (Python), Dash (Python, R, Julia), Gradio (Python)\nDaftar pilihan, bukan peringkat. Sumber: dokumentasi resmi.",
+        "Pustaka data dan analisis per bahasa:\n• Python: pandas, NumPy, Polars, SciPy, Statsmodels, Matplotlib, Seaborn, Plotly, Bokeh, Streamlit, Dash, Gradio, DuckDB, PySpark, Apache Arrow\n• R: tidyverse, Plotly, Dash, DuckDB\n• JavaScript/TypeScript: D3.js, Chart.js, Apache ECharts, Observable Plot, Plotly, DuckDB\n• Rust: Polars, Apache Arrow\n• Julia: Dash\n• Java/Scala: PySpark (Apache Spark), DuckDB, Apache Arrow\n• C++: DuckDB, Apache Arrow\nDaftar pilihan, bukan peringkat. Sumber: dokumentasi resmi."
+      ],
+      "next": {
+        "question": "Mau dipersempit? Untuk pengolahan data, visualisasi, atau dashboard?",
+        "options": [
+          {
+            "label": "Pengolahan",
+            "patterns": ["pengolahan", "pengolahan data", "olah data", "analisis", "analisis data", "hitung data"],
+            "response": "Untuk pengolahan data:\n• Python: pandas, NumPy, Polars, SciPy, Statsmodels, PySpark\n• R: tidyverse\n• SQL analitik lokal: DuckDB (Python, C++, R, Java, JavaScript)\n• Format kolumnar: Apache Arrow (C++, Python, Java, Rust)\nDaftar pilihan, bukan peringkat. Sumber: dokumentasi resmi."
+          },
+          {
+            "label": "Visualisasi",
+            "patterns": ["visualisasi", "visualisasi data", "grafik", "chart", "plot"],
+            "response": "Untuk visualisasi data (pustaka grafik/chart):\n• Python: Matplotlib, Seaborn, Plotly, Bokeh\n• JavaScript/TypeScript: D3.js, Chart.js, Apache ECharts, Observable Plot, Plotly\n• R: Plotly, ggplot2 (tidyverse)\nDaftar pilihan, bukan peringkat. Sumber: dokumentasi resmi."
+          },
+          {
+            "label": "Dashboard",
+            "patterns": ["dashboard", "dashboard data", "aplikasi data", "web data", "interaktif"],
+            "response": "Untuk dashboard & aplikasi web data interaktif:\n• Python: Streamlit, Gradio\n• Python / R / Julia: Dash\nDaftar pilihan, bukan peringkat. Sumber: dokumentasi resmi."
+          }
+        ]
+      }
+    },
+    {
+      "tag": "rekom_cli",
+      "patterns": [
+        "mau bikin aplikasi command line",
+        "pustaka untuk cli",
+        "bikin tool terminal pakai apa",
+        "scripting command line rekomendasi",
+        "framework untuk program command line",
+        "program baris perintah",
+        "cli pakai apa",
+        "framework cli"
+      ],
+      "responses": [
+        "Pilihan pustaka CLI:\n• Parser argumen & kerangka CLI: argparse (Python), Click (Python), Typer (Python), Commander.js (JavaScript), yargs (JavaScript), OCLIF (JS/TS), picocli (Java), System.CommandLine (C#), CLI11 (C++), Cobra (Go), urfave/cli (Go), Clap (Rust), Thor (Ruby), Symfony Console (PHP)\n• Interaktif & TUI: Inquirer.js (JS/TS), Bubbletea (Go), Ratatui (Rust), Rich (Python), Textual (Python)\nDaftar pilihan, bukan peringkat. Sumber: dokumentasi resmi.",
+        "Pustaka CLI per bahasa:\n• Python: argparse, Click, Typer, Rich, Textual\n• JavaScript/TypeScript: Commander.js, yargs, OCLIF, Inquirer.js\n• Java: picocli\n• C#: System.CommandLine\n• C++: CLI11\n• Go: Cobra, urfave/cli, Bubbletea\n• Rust: Clap, Ratatui\n• Ruby: Thor\n• PHP: Symfony Console\nDaftar pilihan, bukan peringkat. Sumber: dokumentasi resmi."
+      ]
+    },
+    {
+      "tag": "rekom_testing",
+      "patterns": [
+        "mau bikin unit test pakai apa",
+        "framework testing rekomendasi",
+        "tools pengujian kode",
+        "tools testing end to end",
+        "pustaka untuk menguji aplikasi",
+        "bikin unit test",
+        "framework testing",
+        "tools e2e",
+        "unit testing pakai apa"
+      ],
+      "responses": [
+        "Pilihan framework testing:\n• Unit test: pytest (Python), unittest (Python), Jest (JS/TS), Vitest (JS/TS), Mocha (JS/TS), JUnit (Java), xUnit (C#), NUnit (C#), GoogleTest (C++), Catch2 (C++), testing package (Go), Testify (Go), Cargo test (Rust), PHPUnit (PHP), Pest (PHP), RSpec (Ruby), Minitest (Ruby), Kotest (Kotlin)\n• End-to-end & browser: Playwright (JS/TS, Python, C#, Java), Cypress (JS/TS), Selenium (Java, Python, C#, JavaScript, Ruby), Puppeteer (JS/TS)\n• Otomasi acceptance: Robot Framework (Python)\nDaftar pilihan, bukan peringkat. Sumber: dokumentasi resmi.",
+        "Framework testing per bahasa:\n• Python: pytest, unittest, Robot Framework\n• JavaScript/TypeScript: Jest, Vitest, Cypress, Puppeteer, Mocha\n• Lintas bahasa: Playwright, Selenium\n• Java: JUnit\n• C#: xUnit, NUnit\n• C++: GoogleTest, Catch2\n• Go: testing package, Testify\n• Rust: Cargo test\n• PHP: PHPUnit, Pest\n• Ruby: RSpec, Minitest\n• Kotlin: Kotest\nDaftar pilihan, bukan peringkat. Sumber: dokumentasi resmi."
+      ],
+      "next": {
+        "question": "Mau dipersempit? Pilih jenis pengujian: Unit Test, E2E & Browser, atau Otomasi Acceptance?",
+        "options": [
+          {
+            "label": "Unit Test",
+            "patterns": ["unit test", "unit testing", "unit", "uji fungsi", "uji modul"],
+            "response": "Untuk unit testing:\n• Python: pytest, unittest\n• JavaScript/TypeScript: Jest, Vitest, Mocha\n• Java / Kotlin: JUnit (Java), Kotest (Kotlin)\n• C# / C++: xUnit (C#), NUnit (C#), GoogleTest (C++), Catch2 (C++)\n• Go / Rust: testing package (Go), Testify (Go), Cargo test (Rust)\n• PHP / Ruby: PHPUnit (PHP), Pest (PHP), RSpec (Ruby), Minitest (Ruby)\nDaftar pilihan, bukan peringkat. Sumber: dokumentasi resmi."
+          },
+          {
+            "label": "E2E & Browser",
+            "patterns": ["e2e", "end to end", "browser", "e2e browser", "uji browser", "ui test"],
+            "response": "Untuk pengujian End-to-End (E2E) & otomatisasi browser:\n• Lintas bahasa: Playwright (JS/TS, Python, C#, Java), Selenium (Java, Python, C#, JS, Ruby)\n• JavaScript/TypeScript: Cypress, Puppeteer\nDaftar pilihan, bukan peringkat. Sumber: dokumentasi resmi."
+          },
+          {
+            "label": "Otomasi Acceptance",
+            "patterns": ["otomasi acceptance", "acceptance", "acceptance test", "keyword driven", "robot"],
+            "response": "Untuk otomasi acceptance test (keyword-driven):\n• Python: Robot Framework\nDaftar pilihan, bukan peringkat. Sumber: dokumentasi resmi."
+          }
+        ]
+      }
+    },
+    {
+      "tag": "rekom_iot",
+      "patterns": [
+        "mau bikin proyek iot pakai apa",
+        "rekomendasi untuk mikrokontroler",
+        "framework iot embedded",
+        "pemrograman arduino esp32",
+        "tools membuat alat pintar",
+        "bikin alat iot pakai apa",
+        "arduino pakai apa",
+        "esp32",
+        "mikrokontroler",
+        "embedded",
+        "framework iot"
+      ],
+      "responses": [
+        "Pilihan framework IoT dan embedded:\n• Framework & toolchain mikrokontroler: Arduino (C/C++), ESP-IDF (C/C++), PlatformIO (C/C++), MicroPython (Python), CircuitPython (Python), TinyGo (Go), .NET nanoFramework (C#), NodeMCU (Lua), Embassy (Rust), embedded-hal (Rust)\n• Sistem operasi real-time (RTOS): FreeRTOS (C), Zephyr RTOS (C), Contiki-NG (C)\n• Kendali perangkat dari komputer/Raspberry Pi: Pigpio (C, Python), Johnny-Five (JavaScript/Node.js)\nDaftar pilihan, bukan peringkat. Sumber: dokumentasi resmi.",
+        "Framework IoT dan embedded per bahasa:\n• C/C++: Arduino, ESP-IDF, PlatformIO, FreeRTOS, Zephyr RTOS, Contiki-NG, Pigpio\n• Python: MicroPython, CircuitPython, Pigpio\n• Rust: Embassy, embedded-hal\n• JavaScript/Node.js: Johnny-Five\n• C#: .NET nanoFramework\n• Go: TinyGo\n• Lua: NodeMCU\nCatatan: Pigpio adalah pustaka GPIO untuk Raspberry Pi, bukan mikrokontroler.\nDaftar pilihan, bukan peringkat. Sumber: dokumentasi resmi."
+      ],
+      "next": {
+        "question": "Mau dipersempit? Untuk Mikrokontroler, RTOS, atau Raspberry Pi?",
+        "options": [
+          {
+            "label": "Mikrokontroler",
+            "patterns": ["mikrokontroler", "arduino", "esp32", "stm32", "toolchain mikrokontroler"],
+            "response": "Untuk pemrograman mikrokontroler (Arduino, ESP32, dll.):\n• C/C++: Arduino, ESP-IDF, PlatformIO\n• Python: MicroPython, CircuitPython\n• Rust / Go: Embassy (Rust), embedded-hal (Rust), TinyGo (Go)\n• C# / Lua: .NET nanoFramework (C#), NodeMCU (Lua)\nDaftar pilihan, bukan peringkat. Sumber: dokumentasi resmi."
+          },
+          {
+            "label": "RTOS",
+            "patterns": ["rtos", "real time", "real time os", "sistem operasi real time", "freertos", "zephyr"],
+            "response": "Untuk sistem operasi real-time (RTOS) pada embedded:\n• C: FreeRTOS, Zephyr RTOS, Contiki-NG\nDaftar pilihan, bukan peringkat. Sumber: dokumentasi resmi."
+          },
+          {
+            "label": "Raspberry Pi",
+            "patterns": ["raspberry pi", "raspi", "komputer", "gpio", "sbc"],
+            "response": "Untuk kendali perangkat/GPIO dari Raspberry Pi atau komputer:\n• C / Python: Pigpio (khusus GPIO Raspberry Pi)\n• JavaScript/Node.js: Johnny-Five\nDaftar pilihan, bukan peringkat. Sumber: dokumentasi resmi."
+          }
+        ]
+      }
+    },
+    {
+      "tag": "rekom_fullstack",
+      "patterns": [
+        "mau bikin website full stack pakai apa",
+        "framework fullstack apa saja",
+        "rekomendasi full stack web",
+        "frontend dan backend sekaligus pakai apa",
+        "fe be langsung gimana",
+        "bikin aplikasi web lengkap pakai apa",
+        "satu framework untuk web lengkap",
+        "bikin aplikasi fullstack",
+        "framework web lengkap",
+        "framework fullstack"
+      ],
+      "responses": [
+        "Pilihan framework fullstack:\n• Meta-framework JavaScript: Next.js (JS/TS), Nuxt (JS/TS), SvelteKit (JS/TS), React Router/eks-Remix (JS/TS), Astro (JS/TS), RedwoodJS (TypeScript), Meteor (JS/TS)\n• Framework server-rendered/MVC: Django (Python), Flask + Jinja2 (Python), Laravel (PHP), Ruby on Rails (Ruby), AdonisJS (TypeScript), Phoenix (Elixir), Spring Boot + Thymeleaf (Java), ASP.NET Core + Blazor (C#), Go Templates (Go)\nDaftar pilihan, bukan peringkat. Sumber: dokumentasi resmi.",
+        "Framework fullstack per bahasa:\n• JavaScript/TypeScript: Next.js, Nuxt, SvelteKit, React Router/eks-Remix, Astro, RedwoodJS, AdonisJS, Meteor\n• Python: Django, Flask + Jinja2\n• PHP: Laravel\n• Ruby: Ruby on Rails\n• C#: ASP.NET Core + Blazor\n• Elixir: Phoenix\n• Java: Spring Boot + Thymeleaf\n• Go: Go Templates\nDaftar pilihan, bukan peringkat. Sumber: dokumentasi resmi."
+      ]
+    },
+    {
+      "tag": "kategori_belum_disebut",
+      "patterns": [
+        "mau bikin website",
+        "mau bikin sistem",
+        "mau bikin proyek",
+        "mau bikin program",
+        "bikin aplikasi apa ya",
+        "mau bikin framework",
+        "bikin aplikasi bingung pakai apa",
+        "rekomendasi teknologi",
+        "kasih rekomendasi dong",
+        "saran framework",
+        "framework apa yang bagus untuk pemula",
+        "bingung mau pakai apa",
+        "bingung pilih framework",
+        "bingung mulai dari mana",
+        "mau belajar coding",
+        "mau belajar programming",
+        "mulai belajar dari mana",
+        "tech stack apa yang cocok",
+        "saran tech stack"
+      ],
+      "responses": [
+        "Boleh! Supaya daftarnya tepat, saya perlu tahu jenis aplikasinya dulu.",
+        "Siap membantu. Daftar framework berbeda untuk tiap jenis aplikasi, jadi sebutkan dulu jenisnya."
+      ],
+      "next": {
+        "question": "Jenis aplikasi apa yang ingin kamu buat: backend, frontend, fullstack, mobile, game, desktop, data, CLI, testing, atau IoT?",
+        "options": [
+          {"label": "Backend", "patterns": ["backend", "server", "api", "rest api"], "goto": "rekom_backend"},
+          {"label": "Frontend", "patterns": ["frontend", "tampilan web", "ui web", "antarmuka"], "goto": "rekom_frontend"},
+          {"label": "Fullstack", "patterns": ["fullstack", "full stack", "web lengkap", "website lengkap"], "goto": "rekom_fullstack"},
+          {"label": "Mobile", "patterns": ["mobile", "aplikasi mobile", "android", "ios"], "goto": "rekom_mobile"},
+          {"label": "Game", "patterns": ["game", "game 2d", "game 3d"], "goto": "rekom_game"},
+          {"label": "Desktop", "patterns": ["desktop", "aplikasi desktop", "pc", "windows"], "goto": "rekom_desktop"},
+          {"label": "Data", "patterns": ["data", "analisis data", "data science", "visualisasi"], "goto": "rekom_data"},
+          {"label": "CLI", "patterns": ["cli", "command line", "terminal", "baris perintah"], "goto": "rekom_cli"},
+          {"label": "Testing", "patterns": ["testing", "test", "pengujian", "unit test"], "goto": "rekom_testing"},
+          {"label": "IoT", "patterns": ["iot", "arduino", "esp32", "embedded", "mikrokontroler"], "goto": "rekom_iot"}
+        ]
+      }
+    }
+  ]
+}

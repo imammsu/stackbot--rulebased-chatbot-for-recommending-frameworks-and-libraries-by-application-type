@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% from "_icons.html" import icon with context %}
+{% block title %}{{ tema.bot_name }} · {{ tema.name }}{% endblock %}
+{% block body_class %}page-chat{% endblock %}
+
+{% block body %}
+<div class="chat-shell">
+  <header class="topbar">
+    <div class="topbar__inner chat-width">
+      <a class="icon-btn" href="{{ url_for('index') }}" aria-label="Kembali ke daftar chatbot" title="Beranda">{{ icon("arrow-left", 19) }}</a>
+      <div class="bot-id">
+        <span class="avatar">{{ icon("layers", 19) }}</span>
+        <div class="bot-id__text">
+          <div class="bot-id__row">
+            <h1 class="bot-id__name">{{ tema.bot_name }}</h1>
+            <span class="badge-pill">Intent Engine</span>
+          </div>
+          <p class="bot-id__meta"><span class="status-dot" aria-hidden="true"></span>{{ tema.name }}</p>
+        </div>
+      </div>
+      <div class="topbar__actions">
+        <a class="btn btn--ghost btn--sm" href="{{ url_for('admin', tema_id=tema.id) }}" title="Buka analitik admin">{{ icon("chart", 15) }}<span class="hide-xs">Admin</span></a>
+        <button class="icon-btn" type="button" id="btn-reset" aria-label="Mulai percakapan baru" title="Percakapan baru">{{ icon("rotate", 18) }}</button>
+        <button class="icon-btn" type="button" data-theme-toggle aria-label="Ganti ke mode terang">{{ icon("sun", 19) }}</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="konten" class="chat-main">
+    <div class="chat-width">
+      <ol id="log" class="messages" role="log" aria-live="polite" aria-relevant="additions" aria-label="Percakapan dengan {{ tema.bot_name }}"></ol>
+      <div id="typing" class="typing" hidden>
+        <span class="avatar avatar--sm">{{ icon("layers", 16) }}</span>
+        <span class="typing__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span class="typing__label">{{ tema.bot_name }} sedang mengetik</span>
+      </div>
+    </div>
+  </main>
+
+  <footer class="composer">
+    <div class="chat-width">
+      <div class="composer__dock">
+        <div class="suggestions" role="group" aria-label="Saran pertanyaan">
+          {% for s in tema.suggestions %}
+          <button type="button" class="chip" data-suggest="{{ s }}">{{ s }}</button>
+          {% endfor %}
+        </div>
+        <form id="form" class="composer__form" novalidate>
+          <label for="input" class="sr-only">Tulis pertanyaan</label>
+          <textarea id="input" name="message" rows="1" maxlength="{{ maks }}" placeholder="Tanyakan jenis aplikasi... (mis. mau bikin aplikasi mobile pakai apa?)" autocomplete="off" aria-describedby="counter hint error"></textarea>
+          <button id="send" class="send-btn" type="submit" aria-label="Kirim pesan" disabled>{{ icon("send", 18) }}</button>
+        </form>
+        <div class="composer__meta">
+          <span id="hint" class="hint"><kbd>Enter</kbd> kirim · <kbd>Shift</kbd>+<kbd>Enter</kbd> baris baru</span>
+          <span id="counter" class="counter" aria-live="off">0/{{ maks }}</span>
+        </div>
+        <p id="error" class="form-error" role="alert" hidden></p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<template id="ikon-bot">{{ icon("layers", 16) }}</template>
+<template id="ikon-user">{{ icon("user", 16) }}</template>
+<template id="ikon-info">{{ icon("info", 14) }}</template>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  window.CHAT_CONFIG = {
+    tema: {{ tema.id|tojson }},
+    botName: {{ tema.bot_name|tojson }},
+    greeting: {{ tema.greeting|tojson }},
+    maks: {{ maks }},
+    apiChat: {{ url_for('api_chat', tema_id=tema.id)|tojson }},
+    apiReset: {{ url_for('api_reset', tema_id=tema.id)|tojson }}
+  };
+</script>
+<script src="{{ url_for('static', filename='js/chat.js') }}" defer></script>
+{% endblock %}

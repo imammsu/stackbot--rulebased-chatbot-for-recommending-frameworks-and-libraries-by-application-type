@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+{% from "_icons.html" import icon with context %}
+{% block title %}Admin · {{ tema.bot_name }}{% endblock %}
+
+{% block body %}
+<header class="topbar">
+  <div class="topbar__inner container">
+    <a class="icon-btn" href="{{ url_for('index') }}" aria-label="Kembali ke daftar chatbot" title="Beranda">{{ icon("arrow-left", 19) }}</a>
+    <span class="brand">
+      <span class="brand__mark">{{ icon("chart", 18, "brand__icon") }}</span>
+      <span>Admin {{ tema.bot_name }}</span>
+      <span class="badge-pill">Analytics</span>
+    </span>
+    <div class="topbar__actions">
+      <a class="btn btn--primary btn--sm" href="{{ url_for('chat', tema_id=tema.id) }}">{{ icon("message", 15) }}<span>Buka chat</span></a>
+      <button class="icon-btn" type="button" data-theme-toggle aria-label="Ganti ke mode terang">{{ icon("sun", 19) }}</button>
+    </div>
+  </div>
+</header>
+
+<main id="konten" class="container admin">
+  <header class="admin-header">
+    <div>
+      <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span>Evaluasi &amp; Telemetri Lokal (SQLite)</p>
+      <h1 class="admin-header__title">Ringkasan Performa Intent</h1>
+    </div>
+  </header>
+
+  <section class="stats" aria-label="Ringkasan">
+    <div class="stat">
+      <div class="stat__head"><p class="stat__label">Total pesan</p>{{ icon("message", 16, "stat__icon") }}</div>
+      <p class="stat__value">{{ stat.total }}</p>
+      <p class="stat__caption">Seluruh interaksi tercatat</p>
+    </div>
+    <div class="stat">
+      <div class="stat__head"><p class="stat__label">Dikenali</p>{{ icon("check", 16, "stat__icon") }}</div>
+      <p class="stat__value">{{ stat.dikenali }}</p>
+      <p class="stat__caption">Skor kemiripan &ge; 0.45</p>
+    </div>
+    <div class="stat">
+      <div class="stat__head"><p class="stat__label">Tidak dikenali</p>{{ icon("alert", 16, "stat__icon stat__icon--warn") }}</div>
+      <p class="stat__value stat__value--warn">{{ stat.tidak_dikenali_total }}</p>
+      <p class="stat__caption">Masuk ke respons fallback</p>
+    </div>
+    <div class="stat">
+      <div class="stat__head"><p class="stat__label">Tingkat dikenali</p>{{ icon("chart", 16, "stat__icon") }}</div>
+      <p class="stat__value">{{ stat.persen }}%</p>
+      <p class="stat__caption">Rasio cakupan pola intent</p>
+    </div>
+  </section>
+
+  <div class="admin-grid">
+    <section class="panel" aria-labelledby="h-unknown">
+      <header class="panel__head">
+        <div>
+          <h2 id="h-unknown" class="panel__title">Pertanyaan tidak dikenali</h2>
+          <p class="panel__sub">Salin kalimat asli pengguna ini menjadi pola baru di <code>themes/{{ tema.id }}.json</code>.</p>
+        </div>
+        <span class="badge-pill">{{ stat.tidak_dikenali|length }} unik</span>
+      </header>
+      {% if stat.tidak_dikenali %}
+      <div class="table-wrap">
+        <table class="table">
+          <thead><tr><th scope="col">Pesan</th><th scope="col" class="num">Jumlah</th><th scope="col" class="num">Skor</th><th scope="col">Terakhir</th><th scope="col"><span class="sr-only">Aksi</span></th></tr></thead>
+          <tbody>
+          {% for r in stat.tidak_dikenali %}
+            <tr>
+              <td class="cell-msg">{{ r.pesan }}</td>
+              <td class="num"><span class="badge-count">{{ r.jumlah }}</span></td>
+              <td class="num mono">{{ "%.2f"|format(r.skor) }}</td>
+              <td class="mono muted">{{ r.terakhir }}</td>
+              <td><button type="button" class="icon-btn icon-btn--sm" data-copy="{{ r.pesan }}" aria-label="Salin: {{ r.pesan }}">{{ icon("copy", 15) }}</button></td>
+            </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      {% else %}
+      <p class="empty">{{ icon("check", 18) }} Belum ada pertanyaan yang tidak dikenali.</p>
+      {% endif %}
+    </section>
+
+    <section class="panel" aria-labelledby="h-intent">
+      <header class="panel__head">
+        <div>
+          <h2 id="h-intent" class="panel__title">Distribusi intent</h2>
+          <p class="panel__sub">Jumlah pesan yang cocok per intent.</p>
+        </div>
+        <span class="badge-pill">{{ stat.per_intent|length }} aktif</span>
+      </header>
+      {% if stat.per_intent %}
+      {% set maks = stat.per_intent[0].jumlah %}
+      <ul class="bars" role="list">
+        {% for r in stat.per_intent %}
+        <li class="bar">
+          <span class="bar__label mono">{{ r.tag }}</span>
+          <span class="bar__track" aria-hidden="true"><span class="bar__fill" style="width: {{ (100 * r.jumlah / maks)|round(1) }}%"></span></span>
+          <span class="bar__value mono">{{ r.jumlah }}</span>
+        </li>
+        {% endfor %}
+      </ul>
+      {% else %}
+      <p class="empty">Belum ada data.</p>
+      {% endif %}
+    </section>
+  </div>
+  <p id="copy-status" class="sr-only" role="status" aria-atomic="true"></p>
+</main>
+{% endblock %}
+
+{% block scripts %}
+<template id="ikon-check">{{ icon("check", 16) }}</template>
+<script src="{{ url_for('static', filename='js/admin.js') }}" defer></script>
+{% endblock %}

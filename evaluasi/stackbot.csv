@@ -1,0 +1,34 @@
+kalimat,intent
+selamat pagi stackbot,salam
+hai apa kabar,salam
+kamu ini bot apa sih,identitas
+fungsi kamu apa,identitas
+oke terima kasih ya,terima_kasih
+sip makasih banyak bot,terima_kasih
+mau buat api untuk aplikasi pakai apa,rekom_backend
+framework server side apa aja,rekom_backend
+bikin tampilan website pake apa ya,rekom_frontend
+library ui web apa aja,rekom_frontend
+bikin aplikasi android dan ios pakai apa,rekom_mobile
+rekom framework buat app hp,rekom_mobile
+mau bikin game 3d enaknya pakai apa,rekom_game
+engine buat bikin gim,rekom_game
+bikin aplikasi desktop windows pake apa,rekom_desktop
+bikin gui buat pc,rekom_desktop
+pustaka visualisasi data apa aja,rekom_data
+olah data excel pakai apa,rekom_data
+bikin tool command line pakai apa,rekom_cli
+pustaka cli python,rekom_cli
+framework unit testing apa aja,rekom_testing
+tools testing e2e,rekom_testing
+proyek arduino pake apa,rekom_iot
+ngoding esp32 pakai apa,rekom_iot
+framework fullstack buat web,rekom_fullstack
+bikin web lengkap frontend backend sekaligus,rekom_fullstack
+bingung mau mulai dari mana,kategori_belum_disebut
+kasih saran tech stack dong,kategori_belum_disebut
+siapa presiden indonesia,fallback
+cara masak rendang,fallback
+cuaca hari ini bagaimana,fallback
+flask vs django bagus mana,fallback
+harga laptop gaming berapa,fallback

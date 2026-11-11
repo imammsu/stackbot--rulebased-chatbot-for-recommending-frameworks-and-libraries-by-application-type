@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% from "_icons.html" import icon with context %}
+{% block title %}Halaman tidak ditemukan{% endblock %}
+{% block body %}
+<main id="konten" class="container notfound">
+  <p class="eyebrow mono">404</p>
+  <h1 class="hero__title">Halaman tidak ditemukan</h1>
+  <p class="hero__lead">Tema atau alamat yang kamu buka tidak tersedia.</p>
+  <a class="btn btn--primary" href="{{ url_for('index') }}">{{ icon("arrow-left", 18) }}<span>Kembali ke beranda</span></a>
+</main>
+{% endblock %}

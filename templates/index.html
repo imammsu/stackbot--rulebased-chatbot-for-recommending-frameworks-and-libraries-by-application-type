@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% from "_icons.html" import icon with context %}
+{% block title %}Chatbot Tematik{% endblock %}
+
+{% block body %}
+<header class="topbar">
+  <div class="topbar__inner container">
+    <span class="brand">
+      <span class="brand__mark">{{ icon("layers", 18, "brand__icon") }}</span>
+      <span>StackBot</span>
+      <span class="badge-pill">SaaS UI</span>
+    </span>
+    <div class="topbar__actions">
+      <button class="icon-btn" type="button" data-theme-toggle aria-label="Ganti ke mode terang">{{ icon("sun", 20) }}</button>
+    </div>
+  </div>
+</header>
+
+<main id="konten" class="container landing">
+  <div class="landing-layout">
+    <section class="hero">
+      <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span>Praktikum Aplikasi Web · Flask · Rule-based</p>
+      <h1 class="hero__title">Eksplorasi framework &amp; pustaka sesuai arsitektur aplikasimu.</h1>
+      <p class="hero__lead">Asisten berbasis aturan (intent matching) yang memetakan pilihan teknologi dari dokumentasi resmi untuk 10 kategori aplikasi — tanpa machine learning, tanpa LLM, dan 100% berjalan lokal.</p>
+
+      <div class="feature-pills" aria-label="Kapabilitas sistem">
+        <span class="feature-pill">{{ icon("check", 14) }} 14 Intent Terkurasi</span>
+        <span class="feature-pill">{{ icon("check", 14) }} 10 Kategori Aplikasi</span>
+        <span class="feature-pill">{{ icon("check", 14) }} Intent Berkonteks (Sub-jalur)</span>
+        <span class="feature-pill">{{ icon("check", 14) }} Toleransi Typo &amp; Bahasa Gaul</span>
+      </div>
+    </section>
+
+    <ul class="theme-grid" role="list">
+      {% for t in themes %}
+      <li class="theme-card">
+        <div class="theme-card__head">
+          <span class="avatar avatar--lg">{{ icon("layers", 24) }}</span>
+          <div class="theme-card__meta">
+            <div class="theme-card__title-row">
+              <h2 class="theme-card__title">{{ t.bot_name }}</h2>
+              <span class="badge-pill badge-pill--live"><span class="status-dot" aria-hidden="true"></span>Ready</span>
+            </div>
+            <p class="theme-card__name">{{ t.name }}</p>
+          </div>
+        </div>
+
+        <p class="theme-card__desc">{{ t.description }}</p>
+
+        <div class="theme-card__domains" aria-label="Cakupan domain">
+          <span>Backend</span><span>Frontend</span><span>Fullstack</span><span>Mobile</span><span>Game</span>
+          <span>Desktop</span><span>Data</span><span>CLI</span><span>Testing</span><span>IoT</span>
+        </div>
+
+        <div class="theme-card__actions">
+          <a class="btn btn--primary" href="{{ url_for('chat', tema_id=t.id) }}">
+            {{ icon("message", 17) }}<span>Mulai chat</span>{{ icon("arrow-right", 16) }}
+          </a>
+          <a class="btn btn--ghost" href="{{ url_for('admin', tema_id=t.id) }}">
+            {{ icon("chart", 17) }}<span>Dashboard Admin</span>
+          </a>
+        </div>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</main>
+{% endblock %}

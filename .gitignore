@@ -1,0 +1,39 @@
+# Virtual environment
+venv/
+.venv/
+env/
+ENV/
+
+# Python cache and generated files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Test, type-checking, and linting cache
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+
+# Database and runtime data
+*.db
+*.sqlite
+*.sqlite3
+*.log
+instance/
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# IDE and operating system files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# OpenCode/agent resources, not application source
+.agents/
